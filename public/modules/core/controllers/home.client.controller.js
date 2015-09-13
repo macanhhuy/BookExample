@@ -19,7 +19,7 @@ angular.module('core').controller('HomeController',
 			  });
 			}
 			
-		}
+		};
 
 	}
 );
