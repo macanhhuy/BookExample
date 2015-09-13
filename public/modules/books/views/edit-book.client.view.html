@@ -1,0 +1,57 @@
+<section data-ng-controller="BooksController" data-ng-init="findOne()">
+    <div class="page-header">
+        <h1>Edit Book</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+            <fieldset>
+                 <div class="form-group">
+                    <label class="control-label" for="name">Name</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="book.name" id="name" class="form-control" placeholder="Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="thumbnail">Thumbnail</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="book.thumbnail" id="thumbnail" class="form-control" placeholder="Thumbnail URL" required>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="control-label" for="big_cover">Big Cover</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="book.big_cover" id="big_cover" class="form-control" placeholder="Big Cover" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="description">Description</label>
+                    <div class="controls">
+                        <textarea data-ng-model="book.description" id="description" class="form-control" placeholder="Description" required></textarea>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label class="control-label" for="category">Category</label>
+                    <div class="controls">
+                        <select name="category" data-ng-model="book.category" id="category" class="form-control" required  >
+                            <option value="">Select A Category</option>
+                            <option ng-selected="setCategory(book.category, category._id)" ng-repeat="category in all_categories| orderBy:'name' track by category._id" value="{{ category._id }}">{{ category.name }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="authors">Authors</label>
+                    <div class="controls">
+                        <select name="authors" data-ng-model="book.authors" id="authors" class="form-control" required ng-options="author.name for author in all_authors| orderBy:'name' track by author._id" multiple>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-default">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+<section data-ng-controller="BooksController" data-ng-init="findOne()">
+	<div class="col-md-12">
+				<!-- .primary block -->
+				<div class="single-book primary-block">
+	<div class="row">
+		<div class="col-md-3 col-sm-3">
+			<div class="book-cover">
+				<img width="268" height="408" alt="" ng-src="{{ book.big_cover }}">
+			</div><!-- /.book-cover -->
+		</div>
+		<div class="col-md-9 col-sm-9">
+			<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == book.user._id))">
+				<a class="btn btn-primary" href="/#!/books/{{book._id}}/edit">
+					<i class="glyphicon glyphicon-edit"></i>
+				</a>
+				<a class="btn btn-primary" data-ng-click="remove();">
+					<i class="glyphicon glyphicon-trash"></i>
+				</a>
+			</div>
+			<div class="featured-book-heading">
+				<h1 class="title">{{ book.name }}</h1>
+				<p class="singl-book-author">
+					by
+					<a href="/#!/authors/{{author._id}}" ng-repeat="author in book.authors">{{ author.name }}</a> 
+				</p>
+			</div>
+
+
+
+			<div class="description">
+				{{ book.description }}
+			</div>
+				</div>
+			</div>
+		</div>			    <!-- /.primary block -->
+
+
+	
+</section>

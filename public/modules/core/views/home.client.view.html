@@ -1,0 +1,54 @@
+<section data-ng-controller="HomeController">
+	<div class="item">
+		<h2 class="ct-fw-700">All Books</h2>
+		<div class="ct-divider ct-u-marginBoth30"></div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<form ng-submit="searchBook()" name="searchForm">
+					<div class="input-group" id="adv-search">
+	                <input type="text" class="form-control" ng-model="keyword" placeholder="Search for ebooks" required="required" minlength="1"/>
+	                <div class="input-group-btn">
+	                    <div class="btn-group" role="group">                        
+	                        <button type="button" class="btn btn-primary" ><span class="glyphicon glyphicon-search" aria-hidden="true" ng-disabled="searchForm.$invalid"></span></button  >
+	                    </div>
+	                </div>
+                </form>
+            </div>
+          </div>
+        </div>
+
+		</div>
+
+		<div class="ct-divider ct-u-marginBoth30"></div>
+		<div class="row">
+			<div class="col-sm-6 col-md-3" ng-repeat="book in all_books">
+				<div class="ct-productBox">
+					<a href="/#!/books/{{ book._id }}">
+						<div class="lession-header">
+							{{ book.name }}
+						</div>
+						<div class="ct-productImage">
+							<img ng-src="{{ book.thumbnail }}" alt="{{ book.name }}">
+						</div>
+						<div class="ct-productDescription">
+							{{ book.description| limitTo:200 }}
+						</div>
+					</a>
+			
+					<div style="text-align: center">
+						<a href="/#!/books/{{ book._id }}" class="btn btn-success">Read more
+						</a>
+					</div>
+					<div class="ct-divider ct-u-marginBoth30"></div>
+					<div class="ct-productMeta">
+
+					</div>
+				</div>
+			</div>
+			<p class="alert alert-danger" ng-show="all_books.length==0">No Books Found!</p>
+		</div>
+		<div class="ct-divider ct-u-marginBoth30"></div>
+
+	</div>
+
+</section>
